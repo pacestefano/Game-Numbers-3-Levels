@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selezione del Gioco</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: white;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 50px; /* Increase margin between title and buttons */
+        }
+        .game-selection {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .game-button-container {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+        }
+        .game-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #a8e6a1;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 300px;
+            height: 80px; /* Set a fixed height for all buttons */
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center align text vertically */
+            margin-left: 5px; /* Add left margin */
+        }
+        .game-button:hover {
+            background-color: #95d894;
+        }
+        .game-button.yellow {
+            background-color: #ffeb3b;
+        }
+        .game-button.yellow:hover {
+            background-color: #e6d32a;
+        }
+        .game-button.red {
+            background-color: #ff8a80;
+        }
+        .game-button.red:hover {
+            background-color: #e67a73;
+        }
+        .button-text {
+            font-size: 18px;
+            line-height: 1.2;
+        }
+        .button-subtext {
+            font-size: 14px;
+            line-height: 1.2;
+        }
+        .level-description {
+            margin-left: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">Scegli il gioco:</div>
+    <div class="game-selection">
+        <div class="game-button-container">
+            <button class="game-button" onclick="location.href='gioco0/index.html'">Gioco x Bruno</button>
+            <div class="level-description">Livello Principianti</div>
+        </div>
+        <div class="game-button-container">
+            <button class="game-button yellow" onclick="location.href='gioco1/index.html'">
+                <span class="button-text">Gioco 1</span>
+                <span class="button-subtext">(Scacchiera da 9 box)</span>
+            </button>
+            <div class="level-description">Livello Intermedio</div>
+        </div>
+        <div class="game-button-container">
+            <button class="game-button red" onclick="location.href='gioco2/index.html'">
+                <span class="button-text">Gioco 2</span>
+                <span class="button-subtext">(Scacchiera da 15 box)</span>
+            </button>
+            <div class="level-description">Livello Avanzato</div>
+        </div>
+    </div>
+</body>
+</html>
