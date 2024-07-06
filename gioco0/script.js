@@ -127,9 +127,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Create the cells on the board with their text colors
-        shuffledCells.forEach(cellData => {
-            createCell(cellData.number, cellData.color);
-        });
+        for (let i = 0; i < 3; i++) {
+            createCell(shuffledCells[i * 3].number, shuffledCells[i * 3].color);
+            createOperator("+");
+            createCell(shuffledCells[i * 3 + 1].number, shuffledCells[i * 3 + 1].color);
+            createOperator("=");
+            createCell(shuffledCells[i * 3 + 2].number, shuffledCells[i * 3 + 2].color);
+        }
 
         if (currentLevel !== 'Base') {
             startTimer();
@@ -180,7 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cell.classList.add('cell');
         cell.textContent = num;
         cell.style.color = color;
-        console.log("Created cell: ", cell);
         cell.draggable = true;
         cell.dataset.index = board.childElementCount;
         cell.addEventListener('dragstart', dragStart);
@@ -191,6 +194,13 @@ document.addEventListener('DOMContentLoaded', () => {
         cell.addEventListener('touchmove', touchMove, { passive: false });
         cell.addEventListener('touchend', touchEnd, { passive: false });
         if (board) board.appendChild(cell);
+    }
+
+    function createOperator(symbol) {
+        let operator = document.createElement('div');
+        operator.classList.add('operator');
+        operator.textContent = symbol;
+        if (board) board.appendChild(operator);
     }
 
     function dragStart(e) {
@@ -324,7 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const cells = Array.from(document.querySelectorAll('.cell')).map(cell => cell.textContent);
         const colors = Array.from(document.querySelectorAll('.cell')).map(cell => cell.style.color);
         moveHistory.push({ cells, colors, moveCount });
-        console.log("Saved move state: ", { cells, colors, moveCount });
     }
 
     window.undoMove = function undoMove() {
